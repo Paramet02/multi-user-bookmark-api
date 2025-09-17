@@ -10,7 +10,9 @@ type User struct {
 	// Entity fields
 	ID           int
 	Email        string
+	Username	 string
 	PasswordHash string
+	Role         string
 	CreatedAt    time.Time
 	UpdatedAt    time.Time
 	DeletedAt    *time.Time // pointer to time.Time to allow null value

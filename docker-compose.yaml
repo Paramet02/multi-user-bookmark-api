@@ -10,7 +10,6 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
       - ./data/postgres:/var/lib/postgresql/data # การเก็บข้อมูล docker ไปยังโฟลเดอร์ data
     ports:
       - "5432:5432"

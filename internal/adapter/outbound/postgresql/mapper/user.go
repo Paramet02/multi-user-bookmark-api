@@ -16,9 +16,10 @@ import (
 // send return to database layer
 func ToUserModel(u *domain.User) *model.UserModel {
 	return &model.UserModel{
-		ID:           u.ID,
 		Email:        u.Email,
+		Username: 	  u.Username,
 		PasswordHash: u.PasswordHash,
+		Role:         u.Role,
 		CreatedAt:    u.CreatedAt,
 		UpdatedAt:    u.UpdatedAt,
 		DeletedAt:    toGormDeletedAt(u.DeletedAt),
@@ -30,9 +31,10 @@ func ToUserModel(u *domain.User) *model.UserModel {
 // send return to business logic layer
 func ToDomainUser(m *model.UserModel) *domain.User {
 	return &domain.User{
-		ID:           m.ID,
 		Email:        m.Email,
+		Username: 	  m.Username,
 		PasswordHash: m.PasswordHash,
+		Role:         m.Role,
 		CreatedAt:    m.CreatedAt,
 		UpdatedAt:    m.UpdatedAt,
 		DeletedAt:    toTimePtr(m.DeletedAt),
@@ -47,7 +49,7 @@ func toGormDeletedAt(t *time.Time) gorm.DeletedAt {
 	return gorm.DeletedAt{}
 }
 
-// help gorm.DeletedAt to *time.Time
+// ช่วยแปลง gorm.DeletedAt เป็น *time.Time
 func toTimePtr(d gorm.DeletedAt) *time.Time {
 	if d.Valid {
 		return &d.Time

@@ -7,9 +7,28 @@ import "time"
 // This struct is used to map the User entity to a response format.
 type UserResponse struct {
 	ID           int       `json:"id"`
+	Username     string    `json:"username"`
 	Email        string    `json:"email"`
-	PasswordHash string    `json:"password_hash"`
-	CreatedAt    time.Time	`json:"created_at"`
-	UpdatedAt    time.Time	`json:"updated_at"`
-	DeletedAt    *time.Time `json:"deleted_at,omitempty"` // pointer to time.Time to allow null value
+	CreatedAt    time.Time `json:"created_at"`
+	UpdatedAt    time.Time `json:"updated_at"`
+}
+
+type RegisterRequest struct {
+	Email    string `json:"email"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type UpdateUserRequest struct {
+	Email    string `json:"email"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type UserPublicResponse struct {
+	ID        int       `json:"id"`
+	Username  string    `json:"username"`
+	Email     string    `json:"email"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
